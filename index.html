@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cropper by Symore. </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Image Cropper ( Adv )</h1>
+        <div class="upload-section">
+            <input type="file" id="file-input" accept="image/*" style="display: none;">
+            <button class="upload-btn" id="upload-btn">Choose Image</button>
+        </div>
+
+        <div class="crop-container">
+            <div>
+                <img id="image-editor" src="" alt="Image to crop">
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn reset-btn" id="reset-btn">Reset Crop</button>
+            </div>
+            <div class="preview-container">
+                <h3 class="preview-title">Preview</h3>
+                <div id="preview"></div>
+
+                <!-- Histogram display -->
+                <div class="histogram-container">
+                    <canvas id="histogram-canvas"></canvas>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn auto-enhance-btn" id="auto-enhance-btn">Auto Enhance</button>
+            </div>
+            <div class="enhancement-controls">
+                <h3 class="enhancement-title">Image Enhancement</h3>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="basic">Basic</button>
+                    <button class="tab" data-tab="advanced">Advanced</button>
+                    <button class="tab" data-tab="effects">Effects</button>
+                    <button class="tab" data-tab="output">Output</button>
+                </div>
+
+                <!-- Basic Tab -->
+                <div class="tab-content active" id="basic-tab">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Brightness</span>
+                            <span id="brightness-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="brightness-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Contrast</span>
+                            <span id="contrast-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="contrast-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Saturation</span>
+                            <span id="saturation-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="saturation-slider">
+                    </div>
+                </div>
+
+                <!-- Advanced Tab -->
+                <div class="tab-content" id="advanced-tab">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Sharpness</span>
+                            <span id="sharpness-value">0</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="sharpness-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Noise Reduction</span>
+                            <span id="noise-value">0</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="noise-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Gamma</span>
+                            <span id="gamma-value">1.0</span>
+                        </div>
+                        <input type="range" min="0.5" max="2.5" value="1.0" step="0.1" class="slider" id="gamma-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Temperature</span>
+                            <span id="temperature-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="temperature-slider">
+                    </div>
+                </div>
+
+                <!-- Effects Tab -->
+                <div class="tab-content" id="effects-tab">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Vignette</span>
+                            <span id="vignette-value">0</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="vignette-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Clarity</span>
+                            <span id="clarity-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="clarity-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Vibrance</span>
+                            <span id="vibrance-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="vibrance-slider">
+                    </div>
+                </div>
+
+                <!-- Output Tab -->
+                <div class="tab-content" id="output-tab">
+                    <div class="file-format-options">
+                        <h4>File Format</h4>
+                        <div class="option-group">
+                            <button class="option-btn active" data-format="jpeg">JPEG</button>
+                            <button class="option-btn" data-format="png">PNG</button>
+                            <button class="option-btn" data-format="webp">WebP</button>
+                        </div>
+
+                        <h4>Quality</h4>
+                        <div class="quality-option">
+                            <input type="radio" id="quality-high" name="quality" value="1.0" checked>
+                            <label for="quality-high">High (Larger File)</label>
+                        </div>
+                        <div class="quality-option">
+                            <input type="radio" id="quality-medium" name="quality" value="0.85">
+                            <label for="quality-medium">Medium (Balanced)</label>
+                        </div>
+                        <div class="quality-option">
+                            <input type="radio" id="quality-low" name="quality" value="0.7">
+                            <label for="quality-low">Low (Smaller File)</label>
+                        </div>
+
+                        <h4>Resampling</h4>
+                        <div class="option-group">
+                            <button class="option-btn active" data-resampling="bilinear">Bilinear</button>
+                            <button class="option-btn" data-resampling="bicubic">Bicubic</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="reset-enhancement" id="reset-enhancement">Reset All Enhancements</button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn download-btn" id="download-btn">Crop and Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
