@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         vibrance: 0
     };
     let outputOptions = {
-        format: 'jpeg',
+        format: 'png',
         quality: 1.0,
         resampling: 'bilinear'
     };
@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
             autoCropArea: 0.8,
             responsive: true,
             restore: false,
-            guides: false,
-            center: false,
+            guides: true,  // Changed from false to true
+            center: true,
             highlight: false,
             cropBoxMovable: true,
             cropBoxResizable: true,

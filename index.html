@@ -42,12 +42,39 @@
                 <div class="tabs">
                     <button class="tab active" data-tab="basic">Basic</button>
                     <button class="tab" data-tab="advanced">Advanced</button>
-                    <button class="tab" data-tab="effects">Effects</button>
                     <button class="tab" data-tab="output">Output</button>
                 </div>
 
                 <!-- Basic Tab -->
+                <!-- Basic Tab -->
                 <div class="tab-content active" id="basic-tab">
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Sharpness</span>
+                            <span id="sharpness-value">0</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="sharpness-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Noise Reduction</span>
+                            <span id="noise-value">0</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="noise-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            <span>Clarity</span>
+                            <span id="clarity-value">0</span>
+                        </div>
+                        <input type="range" min="-100" max="100" value="0" class="slider" id="clarity-slider">
+                    </div>
+                </div>
+
+                <!-- Advanced Tab -->
+                <div class="tab-content" id="advanced-tab">
                     <div class="control-group">
                         <div class="control-label">
                             <span>Brightness</span>
@@ -71,25 +98,6 @@
                         </div>
                         <input type="range" min="-100" max="100" value="0" class="slider" id="saturation-slider">
                     </div>
-                </div>
-
-                <!-- Advanced Tab -->
-                <div class="tab-content" id="advanced-tab">
-                    <div class="control-group">
-                        <div class="control-label">
-                            <span>Sharpness</span>
-                            <span id="sharpness-value">0</span>
-                        </div>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="sharpness-slider">
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">
-                            <span>Noise Reduction</span>
-                            <span id="noise-value">0</span>
-                        </div>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="noise-slider">
-                    </div>
 
                     <div class="control-group">
                         <div class="control-label">
@@ -106,24 +114,13 @@
                         </div>
                         <input type="range" min="-100" max="100" value="0" class="slider" id="temperature-slider">
                     </div>
-                </div>
 
-                <!-- Effects Tab -->
-                <div class="tab-content" id="effects-tab">
                     <div class="control-group">
                         <div class="control-label">
                             <span>Vignette</span>
                             <span id="vignette-value">0</span>
                         </div>
                         <input type="range" min="0" max="100" value="0" class="slider" id="vignette-slider">
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">
-                            <span>Clarity</span>
-                            <span id="clarity-value">0</span>
-                        </div>
-                        <input type="range" min="-100" max="100" value="0" class="slider" id="clarity-slider">
                     </div>
 
                     <div class="control-group">
@@ -135,13 +132,15 @@
                     </div>
                 </div>
 
+
+
                 <!-- Output Tab -->
                 <div class="tab-content" id="output-tab">
                     <div class="file-format-options">
                         <h4>File Format</h4>
                         <div class="option-group">
-                            <button class="option-btn active" data-format="jpeg">JPEG</button>
-                            <button class="option-btn" data-format="png">PNG</button>
+                            <button class="option-btn active" data-format="png">PNG</button>
+                            <button class="option-btn" data-format="jpeg">JPEG</button>
                             <button class="option-btn" data-format="webp">WebP</button>
                         </div>
 
